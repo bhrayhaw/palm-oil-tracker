@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for sidebar animation */
+.sidebar {
+  @apply transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out;
+}
+
+.sidebar-open {
+  @apply transform translate-x-0;
+}
+
+.pagination__link--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination__link--active {
+  background-color: #4a5568; /* bg-gray-700 */
+  color: rgb(122, 109, 109);
+}
