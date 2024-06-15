@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import "leaflet/dist/images/marker-icon.png";
-import "leaflet/dist/images/marker-shadow.png";
+import markerIconUrl from "../assets/image.png";
 
 function SetViewOnMarkers({ records }) {
   const map = useMap();
@@ -21,6 +20,13 @@ function SetViewOnMarkers({ records }) {
 const Map = ({ records }) => {
   const defaultPosition = [5.6037, -0.187]; // Accra, Ghana
   const [isLoading, setIsLoading] = useState(true);
+
+    const myIcon = L.icon({
+      iconUrl: markerIconUrl,
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+    });
 
   useEffect(() => {
     // Simulate data loading (replace with your actual logic)
@@ -47,7 +53,7 @@ const Map = ({ records }) => {
 
         {!isLoading &&
           records.map((record) => (
-            <Marker key={record.id} position={record.location}>
+            <Marker key={record.id} position={record.location} icon={myIcon}>
               <Popup>
                 ID: {record.id} <br />
                 Yield: {record.yield} tons <br />
