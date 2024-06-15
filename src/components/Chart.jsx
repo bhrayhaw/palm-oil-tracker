@@ -26,10 +26,10 @@ ChartJS.register(
   Filler
 );
 
-// Function to generate colors dynamically
+// Function to generate vibrant colors
 const generateColor = (index) => {
   const hue = (index * 137.508) % 360; // Use the golden angle to generate colors
-  return `hsl(${hue}, 70%, 50%)`;
+  return `hsl(${hue}, 85%, 55%)`;
 };
 
 const Chart = ({ yieldData }) => {
@@ -59,8 +59,7 @@ const Chart = ({ yieldData }) => {
   // Generate datasets
   const datasets =
     selectedYear === "All"
-          ? years
-        
+      ? years
           .filter((year) => year !== "All")
           .map((year, index) => {
             const yearData = yieldData.filter((item) =>
@@ -84,7 +83,7 @@ const Chart = ({ yieldData }) => {
               borderColor: color,
               backgroundColor: color
                 .replace("hsl", "hsla")
-                .replace(")", ", 0.2)"),
+                .replace(")", ", 0.6)"), // Adjusted for better visibility
               fill: false,
             };
           })
@@ -103,37 +102,72 @@ const Chart = ({ yieldData }) => {
             borderColor: generateColor(years.indexOf(selectedYear) - 1),
             backgroundColor: generateColor(years.indexOf(selectedYear) - 1)
               .replace("hsl", "hsla")
-              .replace(")", ", 0.2)"),
+              .replace(")", ", 0.6)"), // Adjusted for better visibility
             fill: true,
           },
         ];
 
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: true,
+        position: "top",
+      },
+      tooltip: {
+        mode: "index",
+        intersect: false,
+      },
+    },
+    scales: {
+      x: {
+        display: true,
+        title: {
+          display: true,
+          text: "Month",
+        },
+      },
+      y: {
+        display: true,
+        title: {
+          display: true,
+          text: "Yield (tons)",
+        },
+      },
+    },
+  };
+
   const chart = (
-    <div>
-      <select
-        value={chartType}
-        onChange={(e) => setChartType(e.target.value)}
-        className="block mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-      >
-        <option value="line">Line Chart</option>
-        <option value="bar">Bar Chart</option>
-      </select>
-      <select
-        value={selectedYear}
-        onChange={(e) => setSelectedYear(e.target.value)}
-        className="block mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm ml-2"
-      >
-        {years.map((year) => (
-          <option key={year} value={year}>
-            {year}
-          </option>
-        ))}
-      </select>
-      {chartType === "line" ? (
-        <Line data={{ labels, datasets }} />
-      ) : (
-        <Bar data={{ labels, datasets }} />
-      )}
+    <div className="my-5">
+      <div className="mb-8 flex justify-between">
+        <select
+          value={chartType}
+          onChange={(e) => setChartType(e.target.value)}
+          className="p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 mr-4"
+        >
+          <option value="line">Line Chart</option>
+          <option value="bar">Bar Chart</option>
+        </select>
+        <select
+          value={selectedYear}
+          onChange={(e) => setSelectedYear(e.target.value)}
+          className="p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+          {years.map((year) => (
+            <option key={year} value={year}>
+              {year}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="chart-container" style={{ height: "500px" }}>
+        {chartType === "line" ? (
+          <Line data={{ labels, datasets }} options={options} />
+        ) : (
+          <Bar data={{ labels, datasets }} options={options} />
+        )}
+      </div>
     </div>
   );
 
