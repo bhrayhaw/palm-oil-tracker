@@ -17,7 +17,7 @@ const KPIs = ({
 }) => {
   return (
     <div className="md:grid md:grid-cols-2 lg:grid-cols-3 space-y-3 gap-6 p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-2xl font-semibold mb-4 text-gray-800 col-span-3">
+      <h2 className="sm:text-lg md:text-2xl font-semibold mb-4 text-gray-800 col-span-3">
         Key Performance Indicators
       </h2>
       <KPIItem

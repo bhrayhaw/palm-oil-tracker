@@ -20,7 +20,7 @@ const TopHeader = ({setSidebarOpen, sidebarOpen}) => {
           ></path>
         </svg>
       </button>
-      <div className="text-xl font-bold">
+      <div className="md:text-xl sm:text-xl font-bold">
         Welcome to Our Palm Oil Tracker App
       </div>
     </header>
