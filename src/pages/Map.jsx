@@ -31,13 +31,13 @@ const Map = ({ records }) => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 relative z-0">
       <h1 className="text-2xl font-bold mb-4">Map</h1>
 
       <MapContainer
         center={defaultPosition} // Initial center
         zoom={13}
-        style={{ height: "500px" }}
+        style={{ height: "500px", zIndex: -100 }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
