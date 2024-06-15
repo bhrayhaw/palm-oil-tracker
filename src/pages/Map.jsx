@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import markerIconUrl from "../assets/image.png";
+import markerIconUrl from "../assets/image.png"
 
+
+// Component to automatically adjust map view to fit markers
 function SetViewOnMarkers({ records }) {
   const map = useMap();
 
   useEffect(() => {
     if (records.length > 0) {
-      const bounds = L.latLngBounds(records.map((record) => record.location));
+      const bounds = L.latLngBounds(
+        records.map((record) => record.location || defaultPosition)
+      );
       map.fitBounds(bounds);
     }
-  }, [records, map]);
+  }, [records]);
 
   return null;
 }
@@ -23,26 +27,25 @@ const Map = ({ records }) => {
 
     const myIcon = L.icon({
       iconUrl: markerIconUrl,
-      iconSize: [25, 41],
+      iconSize: [40, 45],
       iconAnchor: [12, 41],
       popupAnchor: [1, -34],
     });
 
   useEffect(() => {
-    // Simulate data loading (replace with your actual logic)
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 relative z-0">
       <h1 className="text-2xl font-bold mb-4">Map</h1>
 
       <MapContainer
         center={defaultPosition}
         zoom={13}
-        style={{ height: "500px" }}
+        style={{ height: "500px", zIndex: -100 }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -53,7 +56,11 @@ const Map = ({ records }) => {
 
         {!isLoading &&
           records.map((record) => (
-            <Marker key={record.id} position={record.location} icon={myIcon}>
+            <Marker
+              key={record.id}
+              position={record.location || defaultPosition}
+              icon={myIcon}
+            >
               <Popup>
                 ID: {record.id} <br />
                 Yield: {record.yield} tons <br />
