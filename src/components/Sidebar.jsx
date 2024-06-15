@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import {
   FiHome,
   FiFileText,
@@ -9,8 +9,7 @@ import {
   FiX,
 } from "react-icons/fi"; // Import icons
 
-const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
-    
+const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   return (
     <div
       className={`bg-gray-800 text-white w-64 py-7 px-2 absolute inset-y-0 left-0 transform ${
@@ -29,41 +28,56 @@ const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
       </div>
       <nav className="space-y-4">
         {/* Dashboard */}
-        <Link
+        <NavLink
           to="/"
-          className="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700" // Add flex for icon alignment
+          className={({ isActive }) =>
+            `flex items-center py-2.5 px-4 rounded transition duration-200 ${
+              isActive ? "bg-gray-700" : "hover:bg-gray-700"
+            }`
+          }
         >
           <FiHome className="mr-2 text-xl" />
           Dashboard
-        </Link>
+        </NavLink>
 
         {/* Report */}
-        <Link
+        <NavLink
           to="/report"
-          className="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
+          className={({ isActive }) =>
+            `flex items-center py-2.5 px-4 rounded transition duration-200 ${
+              isActive ? "bg-gray-700" : "hover:bg-gray-700"
+            }`
+          }
         >
           <FiFileText className="mr-2 text-xl" />
           Report
-        </Link>
+        </NavLink>
 
         {/* Map */}
-        <Link
+        <NavLink
           to="/map"
-          className="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
+          className={({ isActive }) =>
+            `flex items-center py-2.5 px-4 rounded transition duration-200 ${
+              isActive ? "bg-gray-700" : "hover:bg-gray-700"
+            }`
+          }
         >
           <FiMap className="mr-2 text-xl" />
           Map
-        </Link>
+        </NavLink>
 
         {/* Settings */}
-        {/* Position at the bottom */}
-        <Link
-          to="/settings" // Or trigger a settings modal/dropdown
-          className="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700"
+        <NavLink
+          to="/settings"
+          className={({ isActive }) =>
+            `flex items-center py-2.5 px-4 rounded transition duration-200 ${
+              isActive ? "bg-gray-700" : "hover:bg-gray-700"
+            }`
+          }
         >
           <FiSettings className="mr-2 text-xl" />
           Settings
-        </Link>
+        </NavLink>
       </nav>
       {/* Logout Button at the Very Bottom */}
       <div className="mt-auto">
