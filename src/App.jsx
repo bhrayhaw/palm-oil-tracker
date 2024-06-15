@@ -5,7 +5,8 @@ import Report from "./pages/Report";
 import Map from "./pages/Map";
 import Sidebar from "./components/Sidebar";
 import TopHeader from "./components/topHeader";
-import records from "./dummyDataGhanaExtended.json"
+import records from "./dummyDataGhanaExtended.json";
+import Footer from "./components/footer";
 
 const App = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -18,7 +19,10 @@ const App = () => {
       <Router>
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         <div className="flex-1 flex flex-col overflow-hidden">
-          <TopHeader sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+          <TopHeader
+            sidebarOpen={sidebarOpen}
+            setSidebarOpen={setSidebarOpen}
+          />
           <main className="flex-1 overflow-y-auto p-4">
             <Routes>
               <Route
@@ -35,6 +39,7 @@ const App = () => {
               <Route path="/map" element={<Map records={records} />} />
             </Routes>
           </main>
+        <Footer />
         </div>
       </Router>
     </div>
