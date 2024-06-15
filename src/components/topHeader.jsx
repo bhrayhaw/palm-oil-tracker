@@ -1,4 +1,4 @@
-const TopHeader = ({setSidebarOpen, sidebarOpen}) => {
+const TopHeader = ({ setSidebarOpen, sidebarOpen }) => {
   return (
     <header className="flex justify-between items-center bg-white p-4 shadow-md">
       <button
@@ -20,7 +20,7 @@ const TopHeader = ({setSidebarOpen, sidebarOpen}) => {
           ></path>
         </svg>
       </button>
-      <div className="md:text-xl sm:text-xl font-bold">
+      <div className="text-sm sm:text-base md:text-lg lg:text-xl font-bold">
         Welcome to Our Palm Oil Tracker App
       </div>
     </header>
