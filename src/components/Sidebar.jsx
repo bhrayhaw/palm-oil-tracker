@@ -17,7 +17,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen, closeSidebar }) => {
       } md:relative md:translate-x-0 transition duration-200 ease-in-out flex flex-col justify-between`}
     >
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-2xl font-semibold md:hidden">Palm Oil Tracker</h1>
+        <h1 className="text-lg font-semibold md:hidden">Palm Oil Tracker</h1>
         <button
           className="text-gray-400 hover:text-white focus:outline-none md:hidden"
           onClick={() => setSidebarOpen(false)}
