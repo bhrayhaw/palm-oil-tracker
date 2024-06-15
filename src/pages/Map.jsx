@@ -1,20 +1,17 @@
-import React, { useState, useEffect, useRef } from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import React, { useState, useEffect } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-// Component to automatically adjust map view to fit markers
 function SetViewOnMarkers({ records }) {
   const map = useMap();
 
   useEffect(() => {
     if (records.length > 0) {
-      const bounds = L.latLngBounds(
-        records.map((record) => record.location || defaultPosition)
-      );
+      const bounds = L.latLngBounds(records.map((record) => record.location));
       map.fitBounds(bounds);
     }
-  }, [records]);
+  }, [records, map]);
 
   return null;
 }
@@ -31,13 +28,13 @@ const Map = ({ records }) => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4 relative z-0">
+    <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Map</h1>
 
       <MapContainer
-        center={defaultPosition} // Initial center
+        center={defaultPosition}
         zoom={13}
-        style={{ height: "500px", zIndex: -100 }}
+        style={{ height: "500px" }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -48,10 +45,7 @@ const Map = ({ records }) => {
 
         {!isLoading &&
           records.map((record) => (
-            <Marker
-              key={record.id}
-              position={record.location || defaultPosition}
-            >
+            <Marker key={record.id} position={record.location}>
               <Popup>
                 ID: {record.id} <br />
                 Yield: {record.yield} tons <br />
