@@ -7,16 +7,15 @@ import {
   FiSettings,
   FiLogOut,
   FiX,
-} from "react-icons/fi"; // Import icons
+} from "react-icons/fi";
 
-const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
+const Sidebar = ({ sidebarOpen, setSidebarOpen, closeSidebar }) => {
   return (
     <div
-      className={`bg-gray-800 text-white w-64 py-7 px-2 absolute inset-y-0 left-0 transform ${
+      className={`bg-gray-800 text-white w-64 py-7 px-2 absolute inset-y-0 left-0 z-50 transform ${
         sidebarOpen ? "translate-x-0" : "-translate-x-full"
       } md:relative md:translate-x-0 transition duration-200 ease-in-out flex flex-col justify-between`}
     >
-      {/* Title and Close Button */}
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-2xl font-semibold md:hidden">Palm Oil Tracker</h1>
         <button
@@ -27,9 +26,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         </button>
       </div>
       <nav className="space-y-4">
-        {/* Dashboard */}
         <NavLink
           to="/"
+          onClick={closeSidebar}
           className={({ isActive }) =>
             `flex items-center py-2.5 px-4 rounded transition duration-200 ${
               isActive ? "bg-gray-700" : "hover:bg-gray-700"
@@ -40,9 +39,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           Dashboard
         </NavLink>
 
-        {/* Report */}
         <NavLink
           to="/report"
+          onClick={closeSidebar}
           className={({ isActive }) =>
             `flex items-center py-2.5 px-4 rounded transition duration-200 ${
               isActive ? "bg-gray-700" : "hover:bg-gray-700"
@@ -53,9 +52,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           Report
         </NavLink>
 
-        {/* Map */}
         <NavLink
           to="/map"
+          onClick={closeSidebar}
           className={({ isActive }) =>
             `flex items-center py-2.5 px-4 rounded transition duration-200 ${
               isActive ? "bg-gray-700" : "hover:bg-gray-700"
@@ -66,9 +65,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           Map
         </NavLink>
 
-        {/* Settings */}
         <NavLink
           to="/settings"
+          onClick={closeSidebar}
           className={({ isActive }) =>
             `flex items-center py-2.5 px-4 rounded transition duration-200 ${
               isActive ? "bg-gray-700" : "hover:bg-gray-700"
@@ -79,14 +78,11 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
           Settings
         </NavLink>
       </nav>
-      {/* Logout Button at the Very Bottom */}
       <div className="mt-auto">
-        {" "}
-        {/* Pushes the button to the bottom */}
         <button
           className="flex items-center py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700 w-full text-left"
           onClick={() => {
-            /* Your logout logic here */
+            // Your logout logic here
           }}
         >
           <FiLogOut className="mr-2 text-xl" />
