@@ -1,6 +1,6 @@
 # Palm Oil Tracker App
 
-Welcome to the Palm Oil Tracker App! This application helps users track palm oil yields and other related data efficiently. The app provides a modern, responsive user interface with a sidebar navigation, a dashboard with various visualizations, and a detailed report page with pagination.
+Welcome to the Palm Oil Tracker App! This application helps users track palm oil yields and related data efficiently. The app provides a modern, responsive user interface with sidebar navigation, a dashboard with visualizations, and a detailed report page with pagination.
 
 ## Table of Contents
 
@@ -8,7 +8,6 @@ Welcome to the Palm Oil Tracker App! This application helps users track palm oil
 - [Installation](#installation)
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
-- [Project Structure](#project-structure)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -17,8 +16,8 @@ Welcome to the Palm Oil Tracker App! This application helps users track palm oil
 
 - **Responsive Design**: The application is fully responsive, adapting to various screen sizes.
 - **Sidebar Navigation**: Easily navigate between different sections of the app using the sidebar.
-- **Dashboard**: Provides an overview with charts and data visualization.
-- **Report Page**: Displays detailed reports with pagination for easy browsing.
+- **Dashboard**: Provides an overview with charts and data visualizations based on palm oil yield data.
+- **Report Page**: Displays detailed reports with pagination for easy browsing through records.
 - **Styled Components**: Modern, clean, and visually appealing UI components using Tailwind CSS.
 
 ## Installation
@@ -46,14 +45,19 @@ To get started with the Palm Oil Tracker App, follow these steps:
     npm run build
     ```
 
-5. **Preview the production build**:
+5. **Preview the production build locally**:
     ```sh
     npm run preview
     ```
 
+6. **Deploy to Vercel**:
+   - [Create an account on Vercel](https://vercel.com/)
+   - Install Vercel CLI: `npm install -g vercel`
+   - Deploy: `vercel --prod`
+
 ## Usage
 
-Once the server is running, you can access the application in your web browser at `http://localhost:5173`. The sidebar on the left allows you to navigate between the Dashboard and Report pages.
+Once deployed, you can access the application on Vercel at [https://palm-oil-tracker.vercel.app/](https://palm-oil-tracker.vercel.app/). The sidebar on the left allows you to navigate between the Dashboard and Report pages.
 
 ### Dashboard
 
@@ -63,6 +67,10 @@ The dashboard provides an overview of your palm oil data with various charts and
 
 The report page displays a table of records related to palm oil yields. Use the pagination controls at the bottom to navigate through the records.
 
+### Spinner
+
+The application utilizes `react-spinner` to display loading spinners during data fetching or processing.
+
 ## Technologies Used
 
 - **React**: JavaScript library for building user interfaces.
@@ -71,7 +79,7 @@ The report page displays a table of records related to palm oil yields. Use the 
 - **React Router**: Declarative routing for React applications.
 - **React Chart.js 2**: React wrapper for Chart.js for creating charts.
 - **React Paginate**: Component for creating pagination in React.
-
+- **react-spinner**: Component for displaying loading spinners in React applications.
 
 ## Contributing
 
@@ -103,8 +111,6 @@ For any inquiries or feedback, please contact:
 
 - **Name**: Elijah Apreko
 - **Email**: elijahapreko@gmail.com
-- **GitHub**: [bhrayhaw](https://github.com/yourusername)
+- **GitHub**: [bhrayhaw](https://github.com/bhrayhaw)
 
 Thank you for using the Palm Oil Tracker App! We hope it serves your needs well. Happy tracking!
-
-
