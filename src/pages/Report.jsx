@@ -64,24 +64,20 @@ const Report = ({ records }) => {
       </div>
       <div className="mt-8 flex justify-center">
         <ReactPaginate
-          previousLabel={"Previous"}
-          nextLabel={"Next"}
+          previousLabel={"<"}
+          nextLabel={">"}
           pageCount={pageCount}
           onPageChange={changePage}
-          containerClassName={"flex items-center space-x-4"}
-          pageClassName={
-            "text-sm rounded-full px-4 py-2 bg-gray-400 text-white hover:bg-gray-800"
-          }
-          previousClassName={
-            "text-sm rounded-full px-4 py-2 bg-gray-700 text-white hover:bg-gray-800"
-          }
-          nextClassName={
-            "text-sm rounded-full px-4 py-2 bg-gray-700 text-white hover:bg-gray-800"
-          }
-          activeClassName={"font-semibold bg-gray-800 text-white"}
-          disabledClassName={
-            "text-sm rounded-full px-4 py-2 bg-gray-400 text-white cursor-not-allowed"
-          }
+          containerClassName={"flex items-center space-x-2"}
+          pageClassName={"pagination-page"}
+          previousClassName={"pagination-previous"}
+          nextClassName={"pagination-next"}
+          activeClassName={"pagination-active"}
+          disabledClassName={"pagination-disabled"}
+          breakLabel={"..."}
+          breakClassName={"pagination-break"}
+          marginPagesDisplayed={1}
+          pageRangeDisplayed={1}
         />
       </div>
     </div>

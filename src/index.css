@@ -7,21 +7,45 @@
   @apply bg-gray-800 text-white w-64 py-7 px-2 absolute inset-y-0 left-0 z-50 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out flex flex-col justify-between;
 }
 
+.leaflet-map-container {
+  position: relative;
+  z-index: 0;
+}
 .sidebar-open {
   @apply transform translate-x-0;
 }
 
-.pagination__link--disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+/* Pagination Container */
+.pagination-container {
+  @apply flex items-center space-x-1;
 }
 
-.pagination__link--active {
-  background-color: #4a5568;
-  color: rgb(122, 109, 109);
+/* Pagination Page */
+.pagination-page {
+  @apply text-sm rounded-full px-3 py-1 bg-gray-400 text-white hover:bg-gray-800 cursor-pointer;
 }
 
-.leaflet-map-container {
-  position: relative;
-  z-index: 0;
+/* Previous Button */
+.pagination-previous {
+  @apply text-sm rounded-full px-3 py-1 bg-gray-700 text-white hover:bg-gray-800 cursor-pointer;
+}
+
+/* Next Button */
+.pagination-next {
+  @apply text-sm rounded-full px-3 py-1 bg-gray-700 text-white hover:bg-gray-800 cursor-pointer;
+}
+
+/* Active Page */
+.pagination-active {
+  @apply font-semibold bg-gray-800 text-white;
+}
+
+/* Disabled Page */
+.pagination-disabled {
+  @apply text-sm rounded-full px-3 py-1 bg-gray-300 text-white cursor-not-allowed;
+}
+
+/* Break */
+.pagination-break {
+  @apply text-sm rounded-full px-3 py-1 bg-gray-400 text-white;
 }
