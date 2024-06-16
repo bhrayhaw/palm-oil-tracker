@@ -68,7 +68,7 @@ const Report = ({ records }) => {
           nextLabel={">"}
           pageCount={pageCount}
           onPageChange={changePage}
-          containerClassName={"flex items-center space-x-2"}
+          containerClassName={"pagination-container"}
           pageClassName={"pagination-page"}
           previousClassName={"pagination-previous"}
           nextClassName={"pagination-next"}
@@ -78,6 +78,7 @@ const Report = ({ records }) => {
           breakClassName={"pagination-break"}
           marginPagesDisplayed={1}
           pageRangeDisplayed={1}
+          breakLinkClassName={"pagination-break"}
         />
       </div>
     </div>

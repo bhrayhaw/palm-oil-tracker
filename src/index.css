@@ -17,7 +17,7 @@
 
 /* Pagination Container */
 .pagination-container {
-  @apply flex items-center space-x-1;
+  @apply flex items-center space-x-1 md:space-x-2;
 }
 
 /* Pagination Page */
@@ -28,11 +28,13 @@
 /* Previous Button */
 .pagination-previous {
   @apply text-sm rounded-full px-3 py-1 bg-gray-700 text-white hover:bg-gray-800 cursor-pointer;
+  flex-shrink: 0;
 }
 
 /* Next Button */
 .pagination-next {
   @apply text-sm rounded-full px-3 py-1 bg-gray-700 text-white hover:bg-gray-800 cursor-pointer;
+  flex-shrink: 0;
 }
 
 /* Active Page */
@@ -42,7 +44,7 @@
 
 /* Disabled Page */
 .pagination-disabled {
-  @apply text-sm rounded-full px-3 py-1 bg-gray-300 text-white cursor-not-allowed;
+  @apply text-sm rounded-full px-3 py-1 bg-gray-400 text-white cursor-not-allowed;
 }
 
 /* Break */
