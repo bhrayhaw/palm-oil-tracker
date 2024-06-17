@@ -1,4 +1,22 @@
+import React from "react";
+import { useLocation } from "react-router-dom";
+
 const TopHeader = ({ setSidebarOpen, sidebarOpen }) => {
+  const location = useLocation();
+
+  const getHeaderText = () => {
+    switch (location.pathname) {
+      case "/":
+        return "Welcome to Our Palm Oil Tracker App";
+      case "/report":
+        return "General Reports";
+      case "/map":
+        return "Map Overview";
+      default:
+        return "Welcome to Our Palm Oil Tracker App";
+    }
+  };
+
   return (
     <header className="flex justify-between items-center bg-white p-4 shadow-md">
       <button
@@ -21,7 +39,7 @@ const TopHeader = ({ setSidebarOpen, sidebarOpen }) => {
         </svg>
       </button>
       <div className="text-sm sm:text-base md:text-lg lg:text-xl font-bold">
-        Welcome to Our Palm Oil Tracker App
+        {getHeaderText()}
       </div>
     </header>
   );
